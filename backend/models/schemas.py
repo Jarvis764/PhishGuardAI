@@ -27,8 +27,8 @@ class SimulationResponse(BaseModel):
 
 
 class TrainingRequest(BaseModel):
-    user_id: str
-    simulation_id: str
+    user_id: Optional[str] = None
+    simulation_id: Optional[str] = None
     mistake_type: str
 
 

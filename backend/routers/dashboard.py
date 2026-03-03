@@ -5,7 +5,7 @@ from models.schemas import DashboardStats, EmployeeRisk
 
 router = APIRouter()
 
-HIGH_RISK_EMPLOYEES = [
+MOCK_EMPLOYEES_AT_RISK = [
     EmployeeRisk(id=1, name="Alice Johnson", email="alice@company.com", department="Finance", risk_score=87, risk_level="High"),
     EmployeeRisk(id=2, name="Bob Martinez", email="bob@company.com", department="HR", risk_score=74, risk_level="High"),
     EmployeeRisk(id=3, name="Carol White", email="carol@company.com", department="IT", risk_score=68, risk_level="High"),
@@ -21,7 +21,7 @@ async def get_dashboard():
         active_simulations=12,
         company_risk_index=43,
         click_rate=18.5,
-        high_risk_employees=HIGH_RISK_EMPLOYEES,
+        high_risk_employees=MOCK_EMPLOYEES_AT_RISK,
     )
 
 

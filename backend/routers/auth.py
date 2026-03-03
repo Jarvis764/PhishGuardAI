@@ -1,3 +1,4 @@
+import logging
 import os
 from datetime import datetime, timedelta, timezone
 from typing import Optional
@@ -10,7 +11,10 @@ from models.schemas import Token, UserLogin
 
 router = APIRouter()
 
-SECRET_KEY = os.getenv("SECRET_KEY", "phishguard-secret-key-change-in-production")
+_default_secret = "phishguard-secret-key-change-in-production"
+SECRET_KEY = os.getenv("SECRET_KEY", _default_secret)
+if SECRET_KEY == _default_secret:
+    logging.warning("SECRET_KEY is not set. Using insecure default — set SECRET_KEY env variable in production.")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 
